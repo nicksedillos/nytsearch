@@ -4,61 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>New York Times article search</title>
+    <title>New York Times | Article Search</title>
     <link href="css/style.css" rel="stylesheet">
+
+     <!-- CSS Bootstrap link -->
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
+
 <body>
 
-    <p>Title</p>
-<input id="title-input-box">
-    <p>Number of Records</p>
-<input id="number-of-records-input-box">
-    <p>Begin Date</p>
-<input id="begin-date-input-box">
-    <p>End Date</p>
-<input id="end-date-input-box">
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid" style="background-color: #20315A ; color: white;">
+            <div class="container">
+              <i class="far fa-newspaper"></i>
+              <h1 class="title">New York Times Search</h1>
+            </div>
+        </div>
+    </div>
 
-<input id="search" type="submit" value="Search">
-
-
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="javascript.js"></script> -->
-
-<script>
-
-$("#search").on("click", function(event) {
-
-// Preventing the submit button from trying to submit the form
-// We're optionally using a form so the user may hit Enter to search instead of clicking the button
-event.preventDefault();
-
-var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
-
-url += '?' + $.param({
-  'api-key': "5793f7346ff441f5b31ac78df680ddf1",
-  'q': $("#title-input-box").val(),
-  'page': $("#number-of-records-input-box").val(),
-  'begin_date': $("#begin-date-input-box").val(),
-  'end_date': $("#end-date-input-box").val(),
-});
-
-$.ajax({
-  url: url,
-  method: 'GET',
-}).done(function(result) {
-  console.log(result);
-  console.log(result.headline.main);
-  console.log(result.byline.original)
-}).fail(function(err) {
-  throw err;
-});
-
-});
-// Here we grab the text from the input box
+    <section class="search-parameters">
+        <div class="container">
+                <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlInput1">Search Term:</label>
+                          <input type="text" class="form-control" id="search-term">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlSelect1">Number of Records to Retrieve:</label>
+                          <select class="form-control" id="number-records">
+                            <option>1</option>
+                            <option>5</option>
+                            <option>10</option>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlInput1">Start Year (Optional):</label>
+                            <input type="text" class="form-control" id="start-year">
+                        </div>
+                        <div class="form-group">
+                          <label for="exampleFormControlTextarea1">End Year (Optional):</label>
+                          <textarea class="form-control" id="end-year"></textarea>
+                        </div>
+                      </form>
+        </div>
+    </section>
 
 
-</script>
+    <!-- JS/jQuery Bootstrap links -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
 </body>
 </html>
