@@ -8,6 +8,57 @@
     <link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    
+
+    <p>Title</p>
+<input id="title-input-box">
+    <p>Number of Records</p>
+<input id="number-of-records-input-box">
+    <p>Begin Date</p>
+<input id="begin-date-input-box">
+    <p>End Date</p>
+<input id="end-date-input-box">
+
+<input id="search" type="submit" value="Search">
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script type="text/javascript" src="javascript.js"></script> -->
+
+<script>
+
+$("#search").on("click", function(event) {
+
+// Preventing the submit button from trying to submit the form
+// We're optionally using a form so the user may hit Enter to search instead of clicking the button
+event.preventDefault();
+
+var url = "https://api.nytimes.com/svc/search/v2/articlesearch.json";
+
+url += '?' + $.param({
+  'api-key': "5793f7346ff441f5b31ac78df680ddf1",
+  'q': $("#title-input-box").val(),
+  'page': $("#number-of-records-input-box").val(),
+  'begin_date': $("#begin-date-input-box").val(),
+  'end_date': $("#end-date-input-box").val(),
+});
+
+$.ajax({
+  url: url,
+  method: 'GET',
+}).done(function(result) {
+  console.log(result);
+  console.log(result.headline.main);
+  console.log(result.byline.original)
+}).fail(function(err) {
+  throw err;
+});
+
+});
+// Here we grab the text from the input box
+
+
+</script>
+
 </body>
 </html>
