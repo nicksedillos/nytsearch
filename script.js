@@ -11,4 +11,9 @@ Search, clear results
 
 Top articles
 
+TO DO
+Create the AJAX call needed to retrieve data then console.log all of the relevant fields.
+Incorporate various “optional parameters” (hard code these in initially).
+Take note of various “bugs” that appear with certain searches.
+
 */
